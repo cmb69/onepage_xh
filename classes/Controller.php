@@ -28,10 +28,21 @@ class Onepage_Controller
      * Handles plugin related requests.
      *
      * @return void
+     *
+     * @global bool  Whether we're in edit mode.
+     * @global array The configuration of the plugins.
      */
     public static function dispatch()
     {
+        global $edit, $plugin_cf;
+
         if (XH_ADM) {
+            if ($edit) {
+                $template = trim($plugin_cf['onepage']['admin_template']);
+                if ($template != '') {
+                    self::setTemplate($template);
+                }
+            }
             if (function_exists('XH_registerStandardPluginMenuItems')) {
                 XH_registerStandardPluginMenuItems(false);
             }
@@ -40,6 +51,27 @@ class Onepage_Controller
             }
         }
     }
+
+    /**
+     * Sets the template.
+     *
+     * @param string $template A template name.
+     *
+     * @return void
+     *
+     * @global array The paths of system files and folders.
+     */
+    protected static function setTemplate($template)
+    {
+        global $pth;
+
+        $pth['folder']['template'] = $pth['folder']['templates'] . $template . '/';
+        $pth['file']['template'] = $pth['folder']['template'] . 'template.htm';
+        $pth['file']['stylesheet'] = $pth['folder']['template'] . 'stylesheet.css';
+        $pth['folder']['menubuttons'] = $pth['folder']['template'] . 'menu/';
+        $pth['folder']['templateimages'] = $pth['folder']['template'] . 'images/';
+    }
+
     /**
      * Returns whether the plugin administration is requested.
      *

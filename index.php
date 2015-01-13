@@ -34,6 +34,16 @@ EOT
  */
 define('ONEPAGE_VERSION', '@ONEPAGE_VERSION@');
 
+/**
+ * Returns the available templates for metaconfig.php.
+ *
+ * @return array
+ */
+function Onepage_templates()
+{
+    return array_merge(array(''), XH_templates());
+}
+
 Onepage_Controller::dispatch();
 
 ?>
