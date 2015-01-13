@@ -1,0 +1,13 @@
+/*
+ * Back-end.
+ */
+
+.onepage_logo {
+    float: left;
+    width: 128px;
+    height: 128px;
+    margin: 0.5em 1em 0 0;
+}
+.onepage_justify {
+    text-align: justify;
+}
