@@ -44,6 +44,18 @@ function Onepage_templates()
     return array_merge(array(''), XH_templates());
 }
 
+/**
+ * Returns the current page content.
+ *
+ * Convenience alias for Onepage_Controller::getContent().
+ *
+ * @return string (X)HTML.
+ */
+function Onepage_content()
+{
+    return Onepage_Controller::getContent();
+}
+
 Onepage_Controller::dispatch();
 
 ?>

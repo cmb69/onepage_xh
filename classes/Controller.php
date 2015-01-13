@@ -165,6 +165,42 @@ class Onepage_Controller
 
         return $pth['folder']['plugins'] . 'onepage/onepage.png';
     }
+
+    /**
+     * Returns the current page content.
+     *
+     * @return string (X)HTML.
+     *
+     * @global int    The requested page.
+     * @global string The (X)HTML fragment to be prepended to the contents area.
+     * @global array  The indexes of the visible pages.
+     * @global array  The contents of the pages.
+     * @global array  The URLs of the pages.
+     * @global bool   Whether we're in edit mode.
+     */
+    public static function getContent()
+    {
+        global $s, $o, $hc, $c, $u, $edit;
+
+        if (!($edit && XH_ADM) && $s > -1) {
+            $contents = '';
+            $oldS = $s;
+            foreach ($hc as $i) {
+                $s = $i;
+                $contents .= sprintf(
+                    '<div id="%s" class="onepage_page"></div>'
+                    . '%s'
+                    . '<div class="onepage_gap"></div>',
+                    uenc($u[$i]),
+                    evaluate_scripting($c[$i])
+                );
+            }
+            $s = $oldS;
+            return $o . preg_replace('/#CMSimple (.*?)#/is', '', $contents);
+        } else {
+            return $o;
+        }
+    }
 }
 
 ?>
