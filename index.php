@@ -47,13 +47,21 @@ function Onepage_templates()
 /**
  * Returns the current page content.
  *
- * Convenience alias for Onepage_Controller::getContent().
- *
  * @return string (X)HTML.
  */
 function Onepage_content()
 {
     return Onepage_Controller::getContent();
+}
+
+/**
+ * Returns the top link (#TOP).
+ *
+ * @return string (X)HTML.
+ */
+function Onepage_toplink()
+{
+    return Onepage_Controller::renderTopLink();
 }
 
 Onepage_Controller::dispatch();

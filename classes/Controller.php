@@ -36,6 +36,7 @@ class Onepage_Controller
     {
         global $edit, $plugin_cf;
 
+        self::emitJavaScript();
         if (XH_ADM) {
             if ($edit) {
                 $template = trim($plugin_cf['onepage']['admin_template']);
@@ -50,6 +51,22 @@ class Onepage_Controller
                 self::handleAdministration();
             }
         }
+    }
+
+    /**
+     * Emits the JavaScript.
+     *
+     * @return void
+     *
+     * @global array  The paths of system files and folders.
+     * @global string The (X)HTML to append to the body element.
+     */
+    protected static function emitJavaScript()
+    {
+        global $pth, $bjs;
+
+        $bjs .= '<script type="text/javascript" src="' . $pth['folder']['plugins']
+            . 'onepage/onepage.js"></script>';
     }
 
     /**
@@ -200,6 +217,16 @@ class Onepage_Controller
         } else {
             return $o;
         }
+    }
+
+    /**
+     * Renders the top link (#TOP).
+     *
+     * @return string (X)HTML.
+     */
+    public static function renderTopLink()
+    {
+        return '<a id="onepage_toplink" href="#TOP">TOP</a>';
     }
 }
 

@@ -1,4 +1,15 @@
 /*
+ * Front-end.
+ */
+#onepage_toplink {
+    position: fixed;
+    bottom: 0;
+    padding: 1em;
+    background: white;
+    z-index: 1;
+}
+
+/*
  * Back-end.
  */
 
