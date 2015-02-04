@@ -230,10 +230,22 @@ class Onepage_Controller
      * Renders the top link (#TOP).
      *
      * @return string (X)HTML.
+     *
+     * @global array The paths of system files and folders.
+     * @global array The localization of the plugins.
      */
     public static function renderTopLink()
     {
-        return '<a id="onepage_toplink" href="#TOP">TOP</a>';
+        global $pth, $plugin_tx;
+
+        $image = $pth['folder']['templateimages'] . 'up.png';
+        if (!file_exists($image)) {
+            $image = $pth['folder']['plugins'] . 'onepage/images/up.png';
+        }
+        $alt = $plugin_tx['onepage']['alt_toplink'];
+        return '<a id="onepage_toplink" href="#TOP">'
+            . tag('img src="' . $image . '" alt="' . $alt . '"')
+            . '</a>';
     }
 }
 

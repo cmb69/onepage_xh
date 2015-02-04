@@ -3,9 +3,8 @@
  */
 #onepage_toplink {
     position: fixed;
-    bottom: 0;
-    padding: 1em;
-    background: white;
+    bottom: 1em;
+    right: 1em;
     z-index: 1;
 }
 
