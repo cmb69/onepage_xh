@@ -8,7 +8,7 @@
  * @category  CMSimple_XH
  * @package   Onepage
  * @author    Christoph M. Becker <cmbecker69@gmx.de>
- * @copyright 2014-2015 Christoph M. Becker <http://3-magi.net>
+ * @copyright 2015 Christoph M. Becker <http://3-magi.net>
  * @license   http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  * @link      http://3-magi.net/?CMSimple_XH/Onepage_XH
  */
@@ -18,7 +18,7 @@
  */
 if (!defined('CMSIMPLE_XH_VERSION')
     || strpos(CMSIMPLE_XH_VERSION, 'CMSimple_XH') !== 0
-    || version_compare(CMSIMPLE_XH_VERSION, 'CMSimple_XH 1.6', 'lt')
+    || version_compare(CMSIMPLE_XH_VERSION, 'CMSimple_XH 1.6.3', 'lt')
 ) {
     header('HTTP/1.1 403 Forbidden');
     header('Content-Type: text/plain; charset=UTF-8');
@@ -42,6 +42,23 @@ define('ONEPAGE_VERSION', '@ONEPAGE_VERSION@');
 function Onepage_templates()
 {
     return array_merge(array(''), XH_templates());
+}
+
+/**
+ * Returns the table of contents.
+ *
+ * @return string (X)HTML.
+ *
+ * @global array The paths of system files and folders.
+ * @global array The indexes of the visible pages.
+ */
+function Onepage_toc()
+{
+    global $pth, $hc;
+
+    include_once $pth['folder']['classes'] . 'Menu.php';
+    $li = new Onepage_Li();
+    return $li->render($hc, 1);
 }
 
 /**
