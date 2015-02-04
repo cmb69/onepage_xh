@@ -215,7 +215,7 @@ class Onepage_Controller
                     '<div id="%s" class="onepage_page"></div>'
                     . '%s'
                     . '<div class="onepage_gap"></div>',
-                    uenc($u[$i]),
+                    $u[$i],
                     evaluate_scripting($c[$i])
                 );
             }
