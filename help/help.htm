@@ -10,9 +10,12 @@
 <body>
 
 <h1>Onepage_XH - a CMSimple_XH Plugin</h1>
-<div style="float:left"><img src="../onepage.png"
+<div style="float:left; margin-right: 16px"><img src="../onepage.png"
 alt="Yin and yang"></div>
-<p>Onepage_XH offers tools to design and administrate so-called "onepage" websites.</p>
+<p>Onepage_XH offers tools to design and administrate so-called "onepage"
+websites. In the backend you can administrate the site as usual, but in the
+frontend a special template is used, which displays all visible pages at once,
+and the menu links to automatically inserted anchors on the same page.</p>
 
 <ul id="nav">
 <li><a href="#notice">Important Notice</a></li>
@@ -23,7 +26,7 @@ alt="Yin and yang"></div>
 <ul>
     <li><a href="#usage-template">Template</a></li>
 </ul></li>
-<!--<li><a href="#limitations">Limitations</a></li>-->
+<li><a href="#limitations">Limitations</a></li>
 <li><a href="#license">License</a></li>
 <li><a href="#credits">Credits</a></li>
 </ul>
@@ -75,19 +78,28 @@ available), or customize them according to your needs.</p>
 <p>"Onepage" websites require a special template where some of the standard
 CMSimple_XH template tags are replaced with alternatives provided by
 Onepage_XH.</p>
+<h4>onepage_toc</h4>
+<p>This is a required replacement for toc(), which contains links to all visible
+pages.</p>
 <h4>onepage_content</h4>
-<p>This is a required replacement for content(), which shows all visible
-published pages on the start page of the CMSimple_XH installation.</p>
+<p>This is a required replacement for content(), which shows all visible pages
+on the start page of the CMSimple_XH installation.</p>
 <h4>onepage_toplink</h4>
 <p>This is an optional replacement for top(), which provides configurable smooth
 scrolling and is only shown when the user has already scrolled down a bit.
 Without JavaScript support the link is always shown, and there's no smooth
 scrolling but rather a jump. The image of the link can be changed by putting an
 image file named up.png into the images/ folder of the template.</p>
+<h4>Unsupported Template Tags</h4>
+<p>Several template tags are unsupported for "onepage" templates: content(),
+li(), locator(), mailformlink(), nextpage(), previouspage(), printlink()
+searchbox(), sitemaplink(), submenu(), toc().</p>
 <div class="toplink"><a href="#">back to top</a></div>
 
-<!--<h2 id="limitations">Limitations</h2>-->
-<!--<div class="toplink"><a href="#">back to top</a></div>-->
+<h2 id="limitations">Limitations</h2>
+<p>Most likely not all plugins will work seemlessly with "onepage" websites.
+For instance, you can't use page_param's site specific templates.</p>
+<div class="toplink"><a href="#">back to top</a></div>
 
 <h2 id="license">License</h2>
 <p>Onepage_XH is licensed under
