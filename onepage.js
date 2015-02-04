@@ -17,7 +17,7 @@
     function onWindowScroll(listener) {
         if (typeof window.addEventListener !== "undefined") {
             window.addEventListener("scroll", listener, false);
-        } else if (typeof window.attackEvent !== "undefined") {
+        } else if (typeof window.attachEvent !== "undefined") {
             window.attachEvent("onscroll", listener);
         }
     }
