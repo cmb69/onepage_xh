@@ -10,6 +10,9 @@
     right: 1em;
     z-index: 1;
 }
+#onepage_toplink img {
+    border: none;
+}
 
 /*
  * Back-end.
