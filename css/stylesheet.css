@@ -1,6 +1,9 @@
 /*
  * Front-end.
  */
+
+.onepage_page {}
+
 #onepage_toplink {
     position: fixed;
     bottom: 1em;

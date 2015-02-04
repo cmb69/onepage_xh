@@ -212,9 +212,9 @@ class Onepage_Controller
             foreach ($hc as $i) {
                 $s = $i;
                 $contents .= sprintf(
-                    '<div id="%s" class="onepage_page"></div>'
+                    '<div id="%s" class="onepage_page">'
                     . '%s'
-                    . '<div class="onepage_gap"></div>',
+                    . '</div>',
                     $u[$i],
                     evaluate_scripting($c[$i])
                 );
