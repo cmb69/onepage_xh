@@ -60,11 +60,16 @@ class Onepage_Controller
      *
      * @global array  The paths of system files and folders.
      * @global string The (X)HTML to append to the body element.
+     * @global array  The configuration of the plugins.
      */
     protected static function emitJavaScript()
     {
-        global $pth, $bjs;
+        global $pth, $bjs, $plugin_cf;
 
+        $config = array('scrollDuration' => $plugin_cf['onepage']['scroll_duration']);
+        $bjs .= '<script type="text/javascript">/* <![CDATA[ */'
+            . 'var ONEPAGE = ' . json_encode($config)
+            . '/* ]]> */</script>';
         $bjs .= '<script type="text/javascript" src="' . $pth['folder']['plugins']
             . 'onepage/onepage.js"></script>';
     }

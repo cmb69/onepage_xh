@@ -1,3 +1,5 @@
+/*global ONEPAGE */
+
 (function () {
     "use strict";
 
@@ -44,7 +46,7 @@
         }
 
         master = masterElement;
-        duration = 200;
+        duration = ONEPAGE.scrollDuration;
         element = document.getElementById(id);
         if (element) {
             if (typeof window.requestAnimationFrame !== "undefined") {
