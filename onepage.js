@@ -134,7 +134,9 @@
         }
 
         initMasterElement();
-        initSmoothScrolling();
+        if (+ONEPAGE.scrollDuration) {
+            initSmoothScrolling();
+        }
         topLink = document.getElementById("onepage_toplink");
         if (topLink) {
             onWindowScroll(showOrHideTopLink);
