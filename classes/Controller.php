@@ -66,11 +66,13 @@ class Onepage_Controller
     {
         global $pth, $bjs, $plugin_cf;
 
-        $config = array('scrollDuration' => $plugin_cf['onepage']['scroll_duration']);
+        $config = array(
+            'scrollDuration' => $plugin_cf['onepage']['scroll_duration']
+        );
         $bjs .= '<script type="text/javascript">/* <![CDATA[ */'
             . 'var ONEPAGE = ' . json_encode($config)
-            . '/* ]]> */</script>';
-        $bjs .= '<script type="text/javascript" src="' . $pth['folder']['plugins']
+            . '/* ]]> */</script>'
+            . '<script type="text/javascript" src="' . $pth['folder']['plugins']
             . 'onepage/onepage.js"></script>';
     }
 
