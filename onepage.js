@@ -95,6 +95,29 @@
     }
 
     /**
+     * Initializes smooth scrolling for all links to the current page.
+     *
+     * @returns {undefined}
+     */
+    function initSmoothScrolling() {
+        var url, anchors, i, n, anchor;
+
+        function onClick() {
+            navigateToFragment(this.hash.substr(1));
+            return false;
+        }
+
+        url = window.location.href.split("#")[0];
+        anchors = document.getElementsByTagName("a");
+        for (i = 0, n = anchors.length; i < n; i += 1) {
+            anchor = anchors[i];
+            if (anchor.href.split("#")[0] === url) {
+                anchor.onclick = onClick;
+            }
+        }
+    }
+
+    /**
      * Initializes the onepage plugin.
      *
      * @returns {undefined}
@@ -111,13 +134,10 @@
         }
 
         initMasterElement();
+        initSmoothScrolling();
         topLink = document.getElementById("onepage_toplink");
         if (topLink) {
             onWindowScroll(showOrHideTopLink);
-            topLink.onclick = function () {
-                scrollToId("TOP");
-                return false;
-            };
             showOrHideTopLink();
         }
     }
