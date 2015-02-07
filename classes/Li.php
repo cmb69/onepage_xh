@@ -64,6 +64,7 @@ class Onepage_Li extends XH_Li
      * @global string The script name.
      * @global array  The URLs of the pages.
      * @global array  The configuration of the core.
+     * @global bool   Whether we're in edit mode.
      *
      * @return string The (X)HTML.
      */
@@ -73,8 +74,8 @@ class Onepage_Li extends XH_Li
 
         $char = XH_ADM && $edit ? '?' : '#';
         return isset($u[$i])
-            ? '<a href="' . $char . $u[$i] . $x . '">'
-            : '<a href="' . $char . $x . '">';
+            ? '<a href="' . $sn . $char . $u[$i] . $x . '">'
+            : '<a href="' . $sn . $char . $x . '">';
     }
 }
 
