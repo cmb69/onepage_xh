@@ -215,7 +215,7 @@ class Onepage_Controller
                     '<div id="%s" class="onepage_page">'
                     . '%s'
                     . '</div>',
-                    $u[$i],
+                    XH_hsc(urldecode($u[$i])),
                     evaluate_scripting($c[$i])
                 );
             }
