@@ -172,9 +172,9 @@
 
         function showOrHideTopLink() {
             if (masterElement.scrollTop > 300) {
-                topLink.style.display = "";
+                topLink.className = "onepage_show";
             } else {
-                topLink.style.display = "none";
+                topLink.className = "onepage_hide";
             }
         }
 
