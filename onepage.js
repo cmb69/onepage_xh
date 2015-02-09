@@ -46,7 +46,7 @@
      * @returns {undefined}
      */
     function scrollToId(id) {
-        var element, master, duration, start, delta, startOffset;
+        var element, master, duration, start, delta, startOffset, endOffset;
 
         /**
          * Calculates the easing.
@@ -92,14 +92,13 @@
         master = masterElement;
         duration = ONEPAGE.scrollDuration;
         element = document.getElementById(id);
-        if (element) {
-            if (typeof window.requestAnimationFrame !== "undefined") {
-                startOffset = master.scrollTop;
-                delta = element.offsetTop - startOffset;
-                window.requestAnimationFrame(step);
-            } else {
-                master.scrollTop = element.offsetTop;
-            }
+        endOffset = element ? element.offsetTop : 0;
+        if (typeof window.requestAnimationFrame !== "undefined") {
+            startOffset = master.scrollTop;
+            delta = endOffset - startOffset;
+            window.requestAnimationFrame(step);
+        } else {
+            master.scrollTop = endOffset;
         }
     }
 

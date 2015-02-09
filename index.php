@@ -72,13 +72,15 @@ function Onepage_content()
 }
 
 /**
- * Returns the top link (#TOP).
+ * Returns the top link.
+ *
+ * @param string $id An (X)HTML id.
  *
  * @return string (X)HTML.
  */
-function Onepage_toplink()
+function Onepage_toplink($id = '')
 {
-    return Onepage_Controller::renderTopLink();
+    return Onepage_Controller::renderTopLink($id);
 }
 
 Onepage_Controller::dispatch();

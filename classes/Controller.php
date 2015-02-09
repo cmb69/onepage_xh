@@ -228,23 +228,28 @@ class Onepage_Controller
     }
 
     /**
-     * Renders the top link (#TOP).
+     * Renders the top link.
+     *
+     * @param string $id An (X)HTML id.
      *
      * @return string (X)HTML.
      *
      * @global array The paths of system files and folders.
      * @global array The localization of the plugins.
      */
-    public static function renderTopLink()
+    public static function renderTopLink($id)
     {
         global $pth, $plugin_tx;
 
+        if ($id[0] == '#') {
+            $id = substr($id, 1);
+        }
         $image = $pth['folder']['templateimages'] . 'up.png';
         if (!file_exists($image)) {
             $image = $pth['folder']['plugins'] . 'onepage/images/up.png';
         }
         $alt = $plugin_tx['onepage']['alt_toplink'];
-        return '<a id="onepage_toplink" href="#TOP">'
+        return '<a id="onepage_toplink" href="#' . $id . '">'
             . tag('img src="' . $image . '" alt="' . $alt . '"')
             . '</a>';
     }
