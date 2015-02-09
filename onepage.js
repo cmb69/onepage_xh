@@ -9,16 +9,33 @@
     var masterElement;
 
     /**
-     * Adds an event listener to the scroll event of the window.
+     * Calls a callback for each item in a list.
      *
+     * @param   {array-like} items
+     * @param   {Function}   callback
+     * @returns {undefined}
+     */
+    function forEach(items, callback) {
+        var i, n;
+
+        for (i = 0, n = items.length; i < n; i += 1) {
+            callback(items[i]);
+        }
+    }
+
+    /**
+     * Adds an event listener to an object.
+     *
+     * @param   {Object}        object
+     * @param   {String}        event
      * @param   {EventListener} listener
      * @returns {undefined}
      */
-    function onWindowScroll(listener) {
-        if (typeof window.addEventListener !== "undefined") {
-            window.addEventListener("scroll", listener, false);
-        } else if (typeof window.attachEvent !== "undefined") {
-            window.attachEvent("onscroll", listener);
+    function on(object, event, listener) {
+        if (typeof object.addEventListener !== "undefined") {
+            object.addEventListener(event, listener, false);
+        } else if (typeof object.attachEvent !== "undefined") {
+            object.attachEvent("on" + event, listener);
         }
     }
 
@@ -100,21 +117,23 @@
      * @returns {undefined}
      */
     function initSmoothScrolling() {
-        var url, anchors, i, n, anchor;
-
-        function onClick() {
-            navigateToFragment(this.hash.substr(1));
-            return false;
-        }
+        var url, anchors;
 
         url = window.location.href.split("#")[0];
         anchors = document.getElementsByTagName("a");
-        for (i = 0, n = anchors.length; i < n; i += 1) {
-            anchor = anchors[i];
+        forEach(anchors, function (anchor) {
             if (anchor.href.split("#")[0] === url) {
-                anchor.onclick = onClick;
+                on(anchor, "click", function (event) {
+                    navigateToFragment(anchor.hash.substr(1));
+                    if (typeof event.preventDefault !== "undefined") {
+                        event.preventDefault();
+                    } else {
+                        event.returnValue = false;
+                    }
+
+                });
             }
-        }
+        });
     }
 
     /**
@@ -139,7 +158,7 @@
         }
         topLink = document.getElementById("onepage_toplink");
         if (topLink) {
-            onWindowScroll(showOrHideTopLink);
+            on(window, "scroll", showOrHideTopLink);
             showOrHideTopLink();
         }
     }
