@@ -48,14 +48,41 @@
     function scrollToId(id) {
         var element, master, duration, start, delta, startOffset;
 
+        /**
+         * Calculates the easing.
+         *
+         * @param   {Number} percentage
+         * @returns {Number}
+         */
+        function ease(percentage) {
+            switch (ONEPAGE.scrollEasing) {
+            case "quad-in":
+                return percentage * percentage;
+            case "quad-out":
+                return -percentage * (percentage - 2);
+            case "sine":
+                return 0.5 - Math.cos(Math.PI * percentage) / 2;
+            default:
+                return percentage;
+            }
+        }
+
+        /**
+         * Renders the next animation step.
+         *
+         * @param   {Number} timestamp
+         * @returns {undefined}
+         */
         function step(timestamp) {
-            var progress, offset;
+            var progress, offset, percentage;
 
             if (!start) {
                 start = timestamp;
             }
             progress = timestamp - start;
-            offset = delta * Math.min(progress / duration, 1);
+            percentage = Math.min(progress / duration, 1);
+            percentage = ease(percentage);
+            offset = percentage * delta;
             master.scrollTop = startOffset + offset;
             if (progress < duration) {
                 window.requestAnimationFrame(step);

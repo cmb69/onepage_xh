@@ -67,7 +67,8 @@ class Onepage_Controller
         global $pth, $bjs, $plugin_cf;
 
         $config = array(
-            'scrollDuration' => $plugin_cf['onepage']['scroll_duration']
+            'scrollDuration' => $plugin_cf['onepage']['scroll_duration'],
+            'scrollEasing' => $plugin_cf['onepage']['scroll_easing']
         );
         $bjs .= '<script type="text/javascript">/* <![CDATA[ */'
             . 'var ONEPAGE = ' . json_encode($config)
