@@ -72,10 +72,16 @@ class Onepage_Li extends XH_Li
     {
         global $sn, $u, $cf, $edit;
 
-        $char = XH_ADM && $edit ? '?' : '#';
-        return isset($u[$i])
-            ? '<a href="' . $sn . $char . $u[$i] . $x . '">'
-            : '<a href="' . $sn . $char . $x . '">';
+        $html = '<a href="' . $sn;
+        if (XH_ADM && !$edit) {
+            $html .= '?' . $u[$i];
+        }
+        $html .= (XH_ADM && $edit) ? '?' : '#';
+        if (isset($u[$i])) {
+            $html .= $u[$i];
+        }
+        $html .= $x . '">';
+        return $html;
     }
 }
 
