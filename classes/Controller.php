@@ -241,7 +241,7 @@ class Onepage_Controller
     {
         global $pth, $plugin_tx;
 
-        if ($id[0] == '#') {
+        if ($id != '' && $id[0] == '#') {
             $id = substr($id, 1);
         }
         $image = $pth['folder']['templateimages'] . 'up.png';
