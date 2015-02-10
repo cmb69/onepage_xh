@@ -1,4 +1,5 @@
 /*global ONEPAGE */
+/*jslint regexp:true */
 
 (function () {
     "use strict";
@@ -163,6 +164,26 @@
     }
 
     /**
+     * Fixes the view mode link of the admin menu.
+     *
+     * @returns {undefined}
+     */
+    function fixViewModeLink() {
+        var menu, anchor;
+
+        menu = document.getElementById("xh_adminmenu");
+        if (menu) {
+            anchor = menu
+                .getElementsByTagName("ul")[0]
+                .getElementsByTagName("li")[0]
+                .getElementsByTagName("a")[0];
+            if (anchor.href.match(/&normal$/)) {
+                anchor.href += "#" + anchor.href.match(/\?(.*)&/)[1];
+            }
+        }
+    }
+
+    /**
      * Initializes the onepage plugin.
      *
      * @returns {undefined}
@@ -182,6 +203,7 @@
         if (+ONEPAGE.scrollDuration) {
             initSmoothScrolling();
         }
+        fixViewModeLink();
         topLink = document.getElementById("onepage_toplink");
         if (topLink) {
             on(window, "scroll", showOrHideTopLink);
