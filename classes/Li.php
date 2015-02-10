@@ -65,12 +65,13 @@ class Onepage_Li extends XH_Li
      * @global array  The URLs of the pages.
      * @global array  The configuration of the core.
      * @global bool   Whether we're in edit mode.
+     * @global array  The configuration of the plugins.
      *
      * @return string The (X)HTML.
      */
     protected function anchor($i, $x)
     {
-        global $sn, $u, $cf, $edit;
+        global $sn, $u, $cf, $edit, $plugin_cf;
 
         $html = '<a href="' . $sn;
         if (XH_ADM && !$edit) {
@@ -78,7 +79,11 @@ class Onepage_Li extends XH_Li
         }
         $html .= (XH_ADM && $edit) ? '?' : '#';
         if (isset($u[$i])) {
-            $html .= $u[$i];
+            if ($plugin_cf['onepage']['url_numeric'] && !(XH_ADM && $edit)) {
+                $html .= $i;
+            } else {
+                $html .= $u[$i];
+            }
         }
         $html .= $x . '">';
         return $html;

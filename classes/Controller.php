@@ -59,17 +59,23 @@ class Onepage_Controller
      * @return void
      *
      * @global array  The paths of system files and folders.
+     * @global array  The URLs of the pages.
      * @global string The (X)HTML to append to the body element.
      * @global array  The configuration of the plugins.
      */
     protected static function emitJavaScript()
     {
-        global $pth, $bjs, $plugin_cf;
+        global $pth, $u, $bjs, $plugin_cf;
 
+        $pcf = $plugin_cf['onepage'];
         $config = array(
-            'scrollDuration' => $plugin_cf['onepage']['scroll_duration'],
-            'scrollEasing' => $plugin_cf['onepage']['scroll_easing']
+            'numericUrls' => $pcf['url_numeric'],
+            'scrollDuration' => $pcf['scroll_duration'],
+            'scrollEasing' => $pcf['scroll_easing']
         );
+        if (XH_ADM && $pcf['url_numeric']) {
+            $config['urls'] = array_flip($u);
+        }
         $bjs .= '<script type="text/javascript">/* <![CDATA[ */'
             . 'var ONEPAGE = ' . json_encode($config)
             . '/* ]]> */</script>'
@@ -202,22 +208,23 @@ class Onepage_Controller
      * @global array  The contents of the pages.
      * @global array  The URLs of the pages.
      * @global bool   Whether we're in edit mode.
+     * @global array  The configuration of the plugins.
      */
     public static function getContent()
     {
-        global $s, $o, $hc, $c, $u, $edit;
+        global $s, $o, $hc, $c, $u, $edit, $plugin_cf;
 
         if (!($edit && XH_ADM) && $s > -1) {
             $contents = '';
             $oldS = $s;
             foreach ($hc as $i) {
                 $s = $i;
+                $url = $plugin_cf['onepage']['url_numeric']
+                    ? $i
+                    : XH_hsc(urldecode($u[$i]));
                 $contents .= sprintf(
-                    '<div id="%s" class="onepage_page">'
-                    . '%s'
-                    . '</div>',
-                    XH_hsc(urldecode($u[$i])),
-                    evaluate_scripting($c[$i])
+                    '<div id="%s" class="onepage_page">%s</div>',
+                    $url, evaluate_scripting($c[$i])
                 );
             }
             $s = $oldS;

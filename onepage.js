@@ -157,7 +157,6 @@
                     } else {
                         event.returnValue = false;
                     }
-
                 });
             }
         });
@@ -169,7 +168,7 @@
      * @returns {undefined}
      */
     function fixViewModeLink() {
-        var menu, anchor;
+        var menu, anchor, url;
 
         menu = document.getElementById("xh_adminmenu");
         if (menu) {
@@ -178,7 +177,12 @@
                 .getElementsByTagName("li")[0]
                 .getElementsByTagName("a")[0];
             if (anchor.href.match(/&normal$/)) {
-                anchor.href += "#" + anchor.href.match(/\?(.*)&/)[1];
+                url = anchor.href.match(/\?(.*)&/)[1];
+                if (ONEPAGE.numericUrls) {
+                    anchor.href += "#" + ONEPAGE.urls[url];
+                } else {
+                    anchor.href += "#" + url;
+                }
             }
         }
     }
