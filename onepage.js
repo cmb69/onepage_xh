@@ -1,3 +1,11 @@
+/*!
+ *
+ * Onepage_XH browser scripting.
+ *
+ * @copyright 2015 Christoph M. Becker <http://3-magi.net/>
+ * @license   GNU GPLv3 <http://www.gnu.org/licenses/gpl-3.0.en.html>
+ */
+
 /*global ONEPAGE */
 /*jslint regexp:true */
 
