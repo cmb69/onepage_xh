@@ -165,6 +165,9 @@
                     } else {
                         event.returnValue = false;
                     }
+                    if (anchor.id === "onepage_toplink") {
+                        anchor.blur();
+                    }
                 });
             }
         });
