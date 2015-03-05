@@ -55,7 +55,8 @@
      * @returns {undefined}
      */
     function scrollToId(id) {
-        var element, master, duration, start, delta, startOffset, endOffset;
+        var element, master, duration, start, delta, startOffset, endOffset,
+            oldOffset;
 
         /**
          * Calculates the easing.
@@ -83,7 +84,7 @@
          * @returns {undefined}
          */
         function step(timestamp) {
-            var progress, offset, percentage;
+            var progress, offset, percentage, EPSILON = 1;
 
             if (!start) {
                 start = timestamp;
@@ -92,7 +93,10 @@
             percentage = Math.min(progress / duration, 1);
             percentage = ease(percentage);
             offset = percentage * delta;
-            master.scrollTop = startOffset + offset;
+            if (Math.abs(master.scrollTop - oldOffset) > EPSILON) {
+                return;
+            }
+            oldOffset = master.scrollTop = startOffset + offset;
             if (progress < duration) {
                 window.requestAnimationFrame(step);
             }
@@ -103,7 +107,7 @@
         element = document.getElementById(id);
         endOffset = element ? element.offsetTop : 0;
         if (typeof window.requestAnimationFrame !== "undefined") {
-            startOffset = master.scrollTop;
+            oldOffset = startOffset = master.scrollTop;
             delta = endOffset - startOffset;
             window.requestAnimationFrame(step);
         } else {
