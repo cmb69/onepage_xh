@@ -56,7 +56,9 @@ function Onepage_toc()
 {
     global $pth, $hc;
 
-    include_once $pth['folder']['classes'] . 'Menu.php';
+    if (!function_exists('XH_autoload')) {
+        include_once $pth['folder']['classes'] . 'Menu.php';
+    }
     $li = new Onepage_Li();
     return $li->render($hc, 1);
 }
