@@ -63,7 +63,6 @@ class Onepage_Li extends XH_Li
      *
      * @global string The script name.
      * @global array  The URLs of the pages.
-     * @global array  The configuration of the core.
      * @global bool   Whether we're in edit mode.
      * @global array  The configuration of the plugins.
      *
@@ -71,7 +70,7 @@ class Onepage_Li extends XH_Li
      */
     protected function anchor($i, $x)
     {
-        global $sn, $u, $cf, $edit, $plugin_cf;
+        global $sn, $u, $edit, $plugin_cf;
 
         $html = '<a href="' . $sn;
         if (XH_ADM && !$edit) {
