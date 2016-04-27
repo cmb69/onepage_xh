@@ -14,15 +14,11 @@
     border: none;
 }
 .onepage_hide {
-    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";*/
-    /*filter: alpha(opacity=0);*/
     opacity: 0;
     visibility: hidden;
     transition: visibility 1s, opacity 1s;
 }
 .onepage_show {
-    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";*/
-    /*filter: alpha(opacity=100);*/
     opacity: 1;
     visibility: visible;
     transition: visibility 1s, opacity 1s;
