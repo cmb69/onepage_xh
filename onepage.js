@@ -210,11 +210,14 @@
     function init() {
         var topLink;
 
-        function showOrHideTopLink() {
+        function showOrHideTopLink(suffix) {
+            if (typeof suffix != "string") {
+                suffix = "";
+            }
             if (masterElement.scrollTop > 300) {
-                topLink.className = "onepage_show";
+                topLink.className = "onepage_show" + suffix;
             } else {
-                topLink.className = "onepage_hide";
+                topLink.className = "onepage_hide" + suffix;
             }
         }
 
@@ -226,7 +229,7 @@
         topLink = document.getElementById("onepage_toplink");
         if (topLink) {
             on(window, "scroll", showOrHideTopLink);
-            showOrHideTopLink();
+            showOrHideTopLink("_immediate");
         }
     }
 

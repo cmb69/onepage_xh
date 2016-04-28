@@ -18,10 +18,16 @@
     visibility: hidden;
     transition: visibility 1s, opacity 1s;
 }
+.onepage_hide_immediate {
+    visibility: hidden;
+}
 .onepage_show {
     opacity: 1;
     visibility: visible;
     transition: visibility 1s, opacity 1s;
+}
+.onepage_show_immediate {
+    visibility: visible;
 }
 
 /*
