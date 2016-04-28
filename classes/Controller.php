@@ -226,7 +226,12 @@ class Onepage_Controller
                     : XH_hsc(urldecode($u[$i]));
                 $contents .= sprintf(
                     '<div id="%s" class="onepage_page">%s</div>',
-                    $url, evaluate_scripting($c[$i])
+                    $url,
+                    sprintf(
+                        '<div class="%s">%s</div>',
+                        $plugin_cf['onepage']['inner_class'],
+                        evaluate_scripting($c[$i])
+                    )
                 );
             }
             $s = $oldS;

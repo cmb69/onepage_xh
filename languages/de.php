@@ -9,5 +9,6 @@ $plugin_tx['onepage']['cf_admin_template']="Das Template für den Bearbeitungsmo
 $plugin_tx['onepage']['cf_url_numeric']="Ob numerische URLs für die Seiten-Abschnitte verwendet werden sollen.";
 $plugin_tx['onepage']['cf_scroll_duration']="Die Dauer des sanften Scrollens (in Millisekunden). Leer lassen, um das sanfte Scrolling zu deaktivieren.";
 $plugin_tx['onepage']['cf_scroll_easing']="Die Beschleunigungsfunktion für das sanfte Scrollen.";
+$plugin_tx['onepage']['cf_inner_class']="Die CSS-Klasse, die für den inneren Seiten-Container gesetzt werden soll."
 
 ?>
