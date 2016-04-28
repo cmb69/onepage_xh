@@ -36,7 +36,9 @@ class Onepage_Controller
     {
         global $edit, $plugin_cf;
 
-        self::emitJavaScript();
+        if (!(XH_ADM && $edit)) {
+            self::emitJavaScript();
+        }
         if (XH_ADM) {
             if ($edit) {
                 $template = trim($plugin_cf['onepage']['admin_template']);

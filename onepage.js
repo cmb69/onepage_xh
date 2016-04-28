@@ -213,6 +213,8 @@
         function showOrHideTopLink(suffix) {
             if (typeof suffix != "string") {
                 suffix = "";
+            } else {
+                topLink.style.display = "block";
             }
             if (masterElement.scrollTop > 300) {
                 topLink.className = "onepage_show" + suffix;

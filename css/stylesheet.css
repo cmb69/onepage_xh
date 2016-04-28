@@ -9,6 +9,7 @@
     bottom: 1em;
     right: 1em;
     z-index: 1;
+    display: none;
 }
 #onepage_toplink img {
     border: none;
