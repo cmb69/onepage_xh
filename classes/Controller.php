@@ -214,7 +214,7 @@ class Onepage_Controller
      */
     public static function getContent()
     {
-        global $s, $o, $hc, $c, $u, $edit, $plugin_cf;
+        global $s, $o, $hc, $c, $u, $edit, $plugin_cf, $pd_router;
 
         if (!($edit && XH_ADM) && $s > -1) {
             $contents = '';
@@ -224,13 +224,15 @@ class Onepage_Controller
                 $url = $plugin_cf['onepage']['url_numeric']
                     ? $i
                     : XH_hsc(urldecode($u[$i]));
+                $pageData = $pd_router->find_page($i);
+                $content = self::replaceAlternativeHeading($c[$i], $pageData);
                 $contents .= sprintf(
                     '<div id="%s" class="onepage_page">%s</div>',
                     $url,
                     sprintf(
                         '<div class="%s">%s</div>',
                         $plugin_cf['onepage']['inner_class'],
-                        evaluate_scripting($c[$i])
+                        evaluate_scripting($content)
                     )
                 );
             }
@@ -238,6 +240,38 @@ class Onepage_Controller
             return $o . preg_replace('/#CMSimple (.*?)#/is', '', $contents);
         } else {
             return $o;
+        }
+    }
+
+    /**
+     * Replaces the existing heading with an alternative heading if configured.
+     *
+     * @param string $content  The page content.
+     * @param array  $pageData The page data.
+     *
+     * @return string
+     *
+     * @global array The configuration of the core.
+     *
+     * @todo Use Pageparams_replaceAlternativeHeading() if available.
+     */
+    protected static function replaceAlternativeHeading($content, $pageData)
+    {
+        global $cf;
+    
+        if ($pageData['show_heading'] == '1') {
+            $pattern = '/(<h[1-' . $cf['menu']['levels'] . '].*>).+(<\/h[1-'
+                . $cf['menu']['levels'] . ']>)/isU';
+            if (trim($pageData['heading']) == '') {
+                return preg_replace($pattern, '', $content);
+            } else {
+                return preg_replace(
+                    $pattern, '${1}' . addcslashes($pageData['heading'], '$\\') . '$2',
+                    $content
+                );
+            }
+        } else {
+            return $content;
         }
     }
 
