@@ -31,13 +31,14 @@ class Onepage_Controller
      *
      * @global bool  Whether we're in edit mode.
      * @global array The configuration of the plugins.
+     * @global int   The requested page.
      */
     public static function dispatch()
     {
-        global $edit, $plugin_cf;
+        global $edit, $plugin_cf, $s;
 
-        if (!(XH_ADM && $edit)) {
-            self::emitJavaScript();
+        if (!XH_ADM || (!$edit && $s >= 0)) {
+                self::emitJavaScript();
         }
         if (XH_ADM) {
             if ($edit) {
