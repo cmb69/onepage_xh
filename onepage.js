@@ -6,7 +6,7 @@
  * @license   GNU GPLv3 <http://www.gnu.org/licenses/gpl-3.0.en.html>
  */
 
-/*jslint browser: true, maxlen: 80 regexp: true */
+/*jslint browser: true, maxlen: 80, regexp: true */
 /*global ONEPAGE */
 
 (function () {
@@ -128,7 +128,7 @@
         scrollTop = master.scrollTop;
         location.hash = id;
         master.scrollTop = scrollTop;
-        scrollToId(id);
+        scrollToId(decodeURIComponent(id));
     }
 
     /**
