@@ -52,6 +52,8 @@ class Onepage_Controller
             if (self::isAdministrationRequested()) {
                 self::handleAdministration();
             }
+        } else {
+            XH_afterPluginLoading(array('Onepage_Controller', 'evaluateScripting'));
         }
     }
 
@@ -200,6 +202,30 @@ class Onepage_Controller
     }
 
     /**
+     * Evaluates scripting of all visible pages.
+     *
+     * @return void
+     *
+     * @global array The contents of the pages.
+     * @global int   The number of pages.
+     * @global int   The requested page.
+     */
+    static public function evaluateScripting()
+    {
+        global $c, $cl, $s;
+
+        $oldS = $s;
+        for ($i = 0; $i < $cl; $i++) {
+            if (hide($i)) {
+                continue;
+            }
+            $s = $i;
+            $c[$i] = evaluate_scripting($c[$i]);
+        }
+        $s = $oldS;
+    }
+
+    /**
      * Returns the current page content.
      *
      * @return string (X)HTML.
@@ -218,9 +244,7 @@ class Onepage_Controller
 
         if (!($edit && XH_ADM) && $s > -1) {
             $contents = '';
-            $oldS = $s;
             foreach ($hc as $i) {
-                $s = $i;
                 $url = $plugin_cf['onepage']['url_numeric']
                     ? $i
                     : XH_hsc(urldecode($u[$i]));
@@ -232,11 +256,10 @@ class Onepage_Controller
                     sprintf(
                         '<div class="%s">%s</div>',
                         $plugin_cf['onepage']['inner_class'],
-                        evaluate_scripting($content)
+                        $content
                     )
                 );
             }
-            $s = $oldS;
             return $o . preg_replace('/#CMSimple (.*?)#/is', '', $contents);
         } else {
             return $o;
