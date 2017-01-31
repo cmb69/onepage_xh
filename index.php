@@ -86,6 +86,22 @@ function Onepage_toplink($id = '')
     return Onepage_Controller::renderTopLink($id);
 }
 
+/**
+ * API to change a configuration option from the template.
+ *
+ * Changes must not affect the stored configuration,
+ * so we ignore them when the configuration is manipulated in the back-end.
+ *
+ * @param string $key   A configuration option's key.
+ * @param string $value A configuration option's value.
+ *
+ * @return void
+ */
+function Onepage_config($key, $value)
+{
+    Onepage_Controller::setConfig($key, $value);
+}
+
 Onepage_Controller::dispatch();
 
 ?>

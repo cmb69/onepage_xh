@@ -267,6 +267,24 @@ class Onepage_Controller
             . tag('img src="' . $image . '" alt="' . $alt . '"')
             . '</a>';
     }
+
+    public static function setConfig($key, $value)
+    {
+        global $plugin_cf;
+
+        //if (!self::isConfigurationSaving()) {
+            $plugin_cf['onepage'][$key] = $value;
+        //}
+    }
+
+    protected static function isConfigurationSaving()
+    {
+        global $admin, $action;
+
+        return self::isAdministrationRequested()
+            && $admin == 'plugin_config'
+            && $action == 'plugin_save';
+    }
 }
 
 ?>
