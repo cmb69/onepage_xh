@@ -3,7 +3,7 @@
 <img class="onepage_logo" src="<?php echo self::logoPath();?>"
      alt="<?php echo self::l10n('alt_logo')?>"/>
 <p>Version: <?php echo ONEPAGE_VERSION?></p>
-<p>Copyright &copy; 2015-2016 <a href="http://3-magi.net/">Christoph M.
+<p>Copyright &copy; 2015-2017 <a href="http://3-magi.net/">Christoph M.
 Becker</a></p>
 <p class="onepage_justify">This program is free software: you can redistribute
 it and/or modify it under the terms of the GNU General Public License as
