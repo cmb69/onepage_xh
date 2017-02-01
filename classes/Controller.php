@@ -37,7 +37,7 @@ class Onepage_Controller
     {
         global $edit, $plugin_cf, $s;
 
-        if (!XH_ADM || (!$edit && $s >= 0)) {
+        if ((!XH_ADM || (!$edit && $s >= 0)) && $plugin_cf['onepage']['use_javascript']) {
                 self::emitJavaScript();
         }
         if (XH_ADM) {
