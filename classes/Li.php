@@ -25,6 +25,29 @@
 class Onepage_Li extends XH_Li
 {
     /**
+     * Renders the ul start tags.
+     *
+     * @param int $i The index of the current item.
+     *
+     * @return string (X)HTML.
+     *
+     * @global array The menu levels of the pages.
+     *
+     * @access protected
+     */
+    function renderULStartTags($i)
+    {
+        global $l;
+
+        $html = parent::renderULStartTags($i);
+        if ($l[$i] == 1) {
+            return preg_replace('/<ul class/', '<ul id="onepage_menu" class', $html, 1);
+        } else {
+            return $html;
+        }
+    }
+
+    /**
      * Renders a menu item.
      *
      * @param int $i The current item index.

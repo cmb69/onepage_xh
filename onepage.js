@@ -17,6 +17,16 @@
      */
     var masterElement;
 
+    function getElementsByClassName(className) {
+        if (typeof document.getElementsByClassName != "undefined") {
+            return document.getElementsByClassName(className);
+        } else if (typeof document.querySelectorAll != "undefined") {
+            return document.querySelectorAll("." + className);
+        } else {
+            return [];
+        }
+    }
+
     /**
      * Calls a callback for each item in a list.
      *
@@ -223,6 +233,45 @@
             }
         }
 
+        function adjustMenuClasses() {
+            var pages, i, selectedURL, menu, menuItems;
+            
+            function getElementTop(element) {
+                var top = 0;
+
+                while (element) {
+                    top += element.offsetTop;
+                    element = element.offsetParent;
+                }
+                return top;
+            }
+            
+            pages = getElementsByClassName("onepage_page");
+            for (i = pages.length - 1; i >= 0; i--) {
+                var page;
+
+                page = pages[i];
+                if (masterElement.scrollTop >= getElementTop(page)) {
+                    selectedURL = encodeURIComponent(page.id);
+                    break;
+                }
+            }
+            if (!selectedURL && pages.length >= 1) {
+                selectedURL = encodeURIComponent(pages[0].id);
+            }
+
+            menu = document.getElementById("onepage_menu");
+            menuItems = menu.getElementsByTagName("li");
+            forEach(menuItems, function (it) {
+                var a, id;
+
+                a = it.getElementsByTagName("a")[0];
+                if (!a) return;
+                id = a.href.split("#")[1];
+                it.className = (id == selectedURL) ? "sdoc" : "doc";
+            });
+        }
+
         initMasterElement();
         if (+ONEPAGE.scrollDuration) {
             initSmoothScrolling();
@@ -233,6 +282,7 @@
             on(window, "scroll", showOrHideTopLink);
             showOrHideTopLink("_immediate");
         }
+        on(window, "scroll", adjustMenuClasses);
     }
 
     init();
