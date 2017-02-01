@@ -58,6 +58,16 @@
         }
     }
 
+    function getElementTop(element) {
+        var top = 0;
+
+        while (element) {
+            top += element.offsetTop;
+            element = element.offsetParent;
+        }
+        return top;
+    }
+
     /**
      * Scrolls to an element with a certain ID.
      *
@@ -115,7 +125,7 @@
         master = masterElement;
         duration = ONEPAGE.scrollDuration;
         element = document.getElementById(id);
-        endOffset = element ? element.offsetTop : 0;
+        endOffset = element ? getElementTop(element) : 0;
         if (typeof window.requestAnimationFrame !== "undefined") {
             oldOffset = startOffset = master.scrollTop;
             delta = endOffset - startOffset;
@@ -235,16 +245,6 @@
 
         function adjustMenuClasses() {
             var pages, i, selectedURL, menu, menuItems;
-            
-            function getElementTop(element) {
-                var top = 0;
-
-                while (element) {
-                    top += element.offsetTop;
-                    element = element.offsetParent;
-                }
-                return top;
-            }
             
             pages = getElementsByClassName("onepage_page");
             for (i = pages.length - 1; i >= 0; i--) {
