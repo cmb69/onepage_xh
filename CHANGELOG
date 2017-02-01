@@ -1,3 +1,6 @@
+Version 1.0beta2 - released 2016-02-01
+see <https://github.com/cmb69/onepage_xh/milestone/2?closed=1>
+
 Version 1beta1 - released 2015-02-10
 * fixed bug, where navigation to pages with special characters in the heading
   failed (it still fails, but now it should be standard conforming) (reported by
