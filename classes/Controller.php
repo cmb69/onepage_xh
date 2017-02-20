@@ -196,11 +196,10 @@ class Controller
 
     /**
      * @param string $content
-     * @param array $pageData
      * @return string
      * @todo Use Pageparams_replaceAlternativeHeading() if available.
      */
-    protected static function replaceAlternativeHeading($content, $pageData)
+    protected static function replaceAlternativeHeading($content, array $pageData)
     {
         global $cf;
     
