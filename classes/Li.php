@@ -39,7 +39,7 @@ class Li extends XH_Li
      *
      * @access protected
      */
-    function renderULStartTags($i)
+    public function renderULStartTags($i)
     {
         global $l;
 
@@ -60,7 +60,7 @@ class Li extends XH_Li
      *
      * @global array The headings of the pages.
      */
-    function renderMenuItem($i)
+    public function renderMenuItem($i)
     {
         global $h;
 
@@ -76,7 +76,7 @@ class Li extends XH_Li
      *
      * @access protected
      */
-    function renderAnchorStartTag($i)
+    public function renderAnchorStartTag($i)
     {
         $x = $this->shallOpenInNewWindow($i) ? '" target="_blank' : '';
         return $this->anchor($this->ta[$i], $x);
