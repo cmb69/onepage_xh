@@ -101,7 +101,7 @@ class Controller
         $o .= print_plugin_admin('off');
         switch ($admin) {
             case '':
-                $o .= self::render('info');
+                $o .= self::renderInfo();
                 break;
             default:
                 $o .= plugin_admin_common($action, $admin, 'onepage');
@@ -109,33 +109,14 @@ class Controller
     }
 
     /**
-     * @param string $template
      * @return string
      */
-    protected static function render($template)
+    private static function renderInfo()
     {
-        global $pth, $cf;
-
-        $template = $pth['folder']['plugins'] . 'onepage/views/'
-            . $template . '.php';
-        ob_start();
-        include $template;
-        $o = ob_get_clean();
-        if (!$cf['xhtml']['endtags']) {
-            $o = str_replace('/>', '>', $o);
-        }
-        return $o;
-    }
-
-    /**
-     * @param string $key
-     * @return string
-     */
-    protected static function l10n($key)
-    {
-        global $plugin_tx;
-
-        return $plugin_tx['onepage'][$key];
+        $view = new View('info');
+        $view->logo = self::logoPath();
+        $view->version = ONEPAGE_VERSION;
+        return $view->render();
     }
 
     /**
