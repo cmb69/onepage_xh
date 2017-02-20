@@ -5,11 +5,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  */
 
-/**
- * @param string $class
- */
-function Onepage_autoload($class)
-{
+spl_autoload_register(function ($class) {
     global $pth;
 
     $parts = explode('\\', $class, 2);
@@ -17,6 +13,4 @@ function Onepage_autoload($class)
         include_once $pth['folder']['plugins'] . 'onepage/classes/'
             . $parts[1] . '.php';
     }
-}
-
-spl_autoload_register('Onepage_autoload');
+});
