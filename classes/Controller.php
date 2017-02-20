@@ -13,6 +13,8 @@
  * @link      http://3-magi.net/?CMSimple_XH/Onepage_XH
  */
 
+namespace Onepage;
+
 /**
  * The plugin controller.
  *
@@ -22,7 +24,7 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  * @link     http://3-magi.net/?CMSimple_XH/Onepage_XH
  */
-class Onepage_Controller
+class Controller
 {
     /**
      * Handles plugin related requests.
@@ -54,7 +56,7 @@ class Onepage_Controller
                 self::handleAdministration();
             }
         } else {
-            XH_afterPluginLoading(array('Onepage_Controller', 'evaluateScripting'));
+            XH_afterPluginLoading(array('Onepage\\Controller', 'evaluateScripting'));
         }
     }
 

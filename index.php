@@ -60,7 +60,7 @@ function Onepage_toc()
     if (!function_exists('XH_autoload')) {
         include_once $pth['folder']['classes'] . 'Menu.php';
     }
-    $li = new Onepage_Li();
+    $li = new Onepage\Li();
     return $li->render($hc, 1);
 }
 
@@ -71,7 +71,7 @@ function Onepage_toc()
  */
 function Onepage_content()
 {
-    return Onepage_Controller::getContent();
+    return Onepage\Controller::getContent();
 }
 
 /**
@@ -83,9 +83,9 @@ function Onepage_content()
  */
 function Onepage_toplink($id = '')
 {
-    return Onepage_Controller::renderTopLink($id);
+    return Onepage\Controller::renderTopLink($id);
 }
 
-Onepage_Controller::dispatch();
+Onepage\Controller::dispatch();
 
 ?>
