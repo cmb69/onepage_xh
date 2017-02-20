@@ -1,43 +1,19 @@
 <?php
 
 /**
- * The li class.
- *
- * PHP version 5
- *
- * @category  CMSimple_XH
- * @package   Onepage
- * @author    Christoph M. Becker <cmbecker69@gmx.de>
  * @copyright 2015-2017 Christoph M. Becker <http://3-magi.net>
- * @license   http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link      http://3-magi.net/?CMSimple_XH/Onepage_XH
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  */
 
 namespace Onepage;
 
 use XH_Li;
 
-/**
- * The li class.
- *
- * @category CMSimple_XH
- * @package  Onepage
- * @author   Christoph M. Becker <cmbecker69@gmx.de>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link     http://3-magi.net/?CMSimple_XH/Onepage_XH
- */
 class Li extends XH_Li
 {
     /**
-     * Renders the ul start tags.
-     *
-     * @param int $i The index of the current item.
-     *
-     * @return string (X)HTML.
-     *
-     * @global array The menu levels of the pages.
-     *
-     * @access protected
+     * @param int $i
+     * @return string
      */
     public function renderULStartTags($i)
     {
@@ -52,13 +28,8 @@ class Li extends XH_Li
     }
 
     /**
-     * Renders a menu item.
-     *
-     * @param int $i The current item index.
-     *
-     * @return string (X)HTML.
-     *
-     * @global array The headings of the pages.
+     * @param int $i
+     * @return string
      */
     public function renderMenuItem($i)
     {
@@ -68,13 +39,8 @@ class Li extends XH_Li
     }
 
     /**
-     * Renders an anchor start tag.
-     *
-     * @param int $i The index of the current item.
-     *
-     * @return string (X)HTML.
-     *
-     * @access protected
+     * @param int $i
+     * @return string
      */
     public function renderAnchorStartTag($i)
     {
@@ -83,17 +49,9 @@ class Li extends XH_Li
     }
 
     /**
-     * Returns an opening a tag as link to a page.
-     *
-     * @param int    $i The page index.
-     * @param string $x Arbitrary appendix of the URL.
-     *
-     * @global string The script name.
-     * @global array  The URLs of the pages.
-     * @global bool   Whether we're in edit mode.
-     * @global array  The configuration of the plugins.
-     *
-     * @return string The (X)HTML.
+     * @param int $i
+     * @param string $x
+     * @return string
      */
     protected function anchor($i, $x)
     {
@@ -115,5 +73,3 @@ class Li extends XH_Li
         return $html;
     }
 }
-
-?>

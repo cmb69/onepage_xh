@@ -1,16 +1,8 @@
 <?php
 
 /**
- * Front-end of Onepage_XH.
- *
- * PHP version 5
- *
- * @category  CMSimple_XH
- * @package   Onepage
- * @author    Christoph M. Becker <cmbecker69@gmx.de>
  * @copyright 2015-2017 Christoph M. Becker <http://3-magi.net>
- * @license   http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link      http://3-magi.net/?CMSimple_XH/Onepage_XH
+ * @license  ttp://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  */
 
 /*
@@ -30,14 +22,9 @@ EOT
     );
 }
 
-/**
- * The plugin version.
- */
 define('ONEPAGE_VERSION', '@ONEPAGE_VERSION@');
 
 /**
- * Returns the available templates for metaconfig.php.
- *
  * @return array
  */
 function Onepage_templates()
@@ -46,12 +33,7 @@ function Onepage_templates()
 }
 
 /**
- * Returns the table of contents.
- *
- * @return string (X)HTML.
- *
- * @global array The paths of system files and folders.
- * @global array The indexes of the visible pages.
+ * @return string
  */
 function Onepage_toc()
 {
@@ -65,9 +47,7 @@ function Onepage_toc()
 }
 
 /**
- * Returns the current page content.
- *
- * @return string (X)HTML.
+ * @return string
  */
 function Onepage_content()
 {
@@ -75,11 +55,8 @@ function Onepage_content()
 }
 
 /**
- * Returns the top link.
- *
- * @param string $id An (X)HTML id.
- *
- * @return string (X)HTML.
+ * @param string $id
+ * @return string
  */
 function Onepage_toplink($id = '')
 {
@@ -87,5 +64,3 @@ function Onepage_toplink($id = '')
 }
 
 Onepage\Controller::dispatch();
-
-?>

@@ -1,40 +1,14 @@
 <?php
 
 /**
- * The plugin controller.
- *
- * PHP version 5
- *
- * @category  CMSimple_XH
- * @package   Onepage
- * @author    Christoph M. Becker <cmbecker69@gmx.de>
  * @copyright 2015-2017 Christoph M. Becker <http://3-magi.net>
- * @license   http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link      http://3-magi.net/?CMSimple_XH/Onepage_XH
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  */
 
 namespace Onepage;
 
-/**
- * The plugin controller.
- *
- * @category CMSimple_XH
- * @package  Onepage
- * @author   Christoph M. Becker <cmbecker69@gmx.de>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link     http://3-magi.net/?CMSimple_XH/Onepage_XH
- */
 class Controller
 {
-    /**
-     * Handles plugin related requests.
-     *
-     * @return void
-     *
-     * @global bool  Whether we're in edit mode.
-     * @global array The configuration of the plugins.
-     * @global int   The requested page.
-     */
     public static function dispatch()
     {
         global $edit, $plugin_cf, $s;
@@ -60,16 +34,6 @@ class Controller
         }
     }
 
-    /**
-     * Emits the JavaScript.
-     *
-     * @return void
-     *
-     * @global array  The paths of system files and folders.
-     * @global array  The URLs of the pages.
-     * @global string The (X)HTML to append to the body element.
-     * @global array  The configuration of the plugins.
-     */
     protected static function emitJavaScript()
     {
         global $pth, $u, $bjs, $plugin_cf;
@@ -91,13 +55,7 @@ class Controller
     }
 
     /**
-     * Sets the template.
-     *
-     * @param string $template A template name.
-     *
-     * @return void
-     *
-     * @global array The paths of system files and folders.
+     * @param string $template
      */
     protected static function setTemplate($template)
     {
@@ -111,11 +69,7 @@ class Controller
     }
 
     /**
-     * Returns whether the plugin administration is requested.
-     *
      * @return bool
-     *
-     * @global string Whether the plugin administration is requested.
      */
     protected static function isAdministrationRequested()
     {
@@ -126,38 +80,23 @@ class Controller
             || isset($onepage) && $onepage == 'true';
     }
 
-    /**
-     * Handles the plugin administration.
-     *
-     * @return void
-     *
-     * @global string The value of the <var>admin</var> GP parameter.
-     * @global string The value of the <var>action</var> GP parameter.
-     * @global string The (X)HTML fragment to insert at the top of the content.
-     */
     protected static function handleAdministration()
     {
         global $admin, $action, $o;
 
         $o .= print_plugin_admin('off');
         switch ($admin) {
-        case '':
-            $o .= self::render('info');
-            break;
-        default:
-            $o .= plugin_admin_common($action, $admin, 'onepage');
+            case '':
+                $o .= self::render('info');
+                break;
+            default:
+                $o .= plugin_admin_common($action, $admin, 'onepage');
         }
     }
 
     /**
-     * Renders a view template.
-     *
-     * @param string $template The name of the template.
-     *
+     * @param string $template
      * @return string
-     *
-     * @global array The paths of system files and folders.
-     * @global array The configuration of the core.
      */
     protected static function render($template)
     {
@@ -175,13 +114,8 @@ class Controller
     }
 
     /**
-     * Returns the localization of a string.
-     *
-     * @param string $key The key of the string.
-     *
+     * @param string $key
      * @return string
-     *
-     * @global array The localization of the plugins.
      */
     protected static function l10n($key)
     {
@@ -191,11 +125,7 @@ class Controller
     }
 
     /**
-     * Returns the path of the plugin logo.
-     *
      * @return string
-     *
-     * @global array The paths of system files and folders.
      */
     protected static function logoPath()
     {
@@ -204,16 +134,7 @@ class Controller
         return $pth['folder']['plugins'] . 'onepage/onepage.png';
     }
 
-    /**
-     * Evaluates scripting of all visible pages.
-     *
-     * @return void
-     *
-     * @global array The contents of the pages.
-     * @global int   The number of pages.
-     * @global int   The requested page.
-     */
-    static public function evaluateScripting()
+    public static function evaluateScripting()
     {
         global $c, $cl, $s;
 
@@ -229,17 +150,7 @@ class Controller
     }
 
     /**
-     * Returns the current page content.
-     *
-     * @return string (X)HTML.
-     *
-     * @global int    The requested page.
-     * @global string The (X)HTML fragment to be prepended to the contents area.
-     * @global array  The indexes of the visible pages.
-     * @global array  The contents of the pages.
-     * @global array  The URLs of the pages.
-     * @global bool   Whether we're in edit mode.
-     * @global array  The configuration of the plugins.
+     * @return string
      */
     public static function getContent()
     {
@@ -270,15 +181,9 @@ class Controller
     }
 
     /**
-     * Replaces the existing heading with an alternative heading if configured.
-     *
-     * @param string $content  The page content.
-     * @param array  $pageData The page data.
-     *
+     * @param string $content
+     * @param array $pageData
      * @return string
-     *
-     * @global array The configuration of the core.
-     *
      * @todo Use Pageparams_replaceAlternativeHeading() if available.
      */
     protected static function replaceAlternativeHeading($content, $pageData)
@@ -292,7 +197,8 @@ class Controller
                 return preg_replace($pattern, '', $content);
             } else {
                 return preg_replace(
-                    $pattern, '${1}' . addcslashes($pageData['heading'], '$\\') . '$2',
+                    $pattern,
+                    '${1}' . addcslashes($pageData['heading'], '$\\') . '$2',
                     $content
                 );
             }
@@ -302,14 +208,8 @@ class Controller
     }
 
     /**
-     * Renders the top link.
-     *
-     * @param string $id An (X)HTML id.
-     *
-     * @return string (X)HTML.
-     *
-     * @global array The paths of system files and folders.
-     * @global array The localization of the plugins.
+     * @param string $id
+     * @return string
      */
     public static function renderTopLink($id)
     {
@@ -328,5 +228,3 @@ class Controller
             . '</a>';
     }
 }
-
-?>
