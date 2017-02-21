@@ -25,8 +25,9 @@ class Controller
 {
     public static function dispatch()
     {
-        global $edit, $plugin_cf, $s;
+        global $edit, $plugin_cf, $plugin_tx, $s, $pd_router, $pth;
 
+        $pd_router->add_interest('onepage_class');
         if ((!XH_ADM || (!$edit && $s >= 0)) && $plugin_cf['onepage']['use_javascript']) {
                 self::emitJavaScript();
         }
@@ -40,6 +41,10 @@ class Controller
             if (function_exists('XH_registerStandardPluginMenuItems')) {
                 XH_registerStandardPluginMenuItems(false);
             }
+            $pd_router->add_tab(
+                $plugin_tx['onepage']['tab_title'],
+                "{$pth['folder']['plugins']}onepage/onepage_view.php"
+            );
             if (self::isAdministrationRequested()) {
                 self::handleAdministration();
             }
@@ -160,8 +165,9 @@ class Controller
                 $pageData = $pd_router->find_page($i);
                 $content = self::replaceAlternativeHeading($c[$i], $pageData);
                 $contents .= sprintf(
-                    '<div id="%s" class="onepage_page">%s</div>',
+                    '<div id="%s" class="onepage_page %s">%s</div>',
                     $url,
+                    $pageData['onepage_class'],
                     sprintf(
                         '<div class="%s">%s</div>',
                         $plugin_cf['onepage']['inner_class'],

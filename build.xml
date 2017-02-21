@@ -3,7 +3,8 @@
 <project name="Onepage" default="help">
 
     <fileset id="php-sources" dir=".">
-        <include name="index.php"/>
+        <include name="*.php"/>
+        <exclude name="admin.php"/>
         <include name="classes/*.php"/>
     </fileset>
 

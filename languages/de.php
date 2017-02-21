@@ -2,6 +2,10 @@
 
 $plugin_tx['onepage']['menu_info']="Info";
 
+$plugin_tx['onepage']['tab_title']="Onepage";
+$plugin_tx['onepage']['tab_class']="CSS-Klasse";
+$plugin_tx['onepage']['tab_save']="Speichern";
+
 $plugin_tx['onepage']['alt_logo']="Yin und Yang";
 $plugin_tx['onepage']['alt_toplink']="Nach oben";
 
