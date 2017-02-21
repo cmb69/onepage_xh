@@ -154,12 +154,12 @@
         }
 
         master = masterElement;
-        duration = ONEPAGE.scrollDuration;
         element = document.getElementById(id);
         endOffset = element ? getElementTop(element) : 0;
         if (typeof window.requestAnimationFrame !== "undefined") {
             oldOffset = startOffset = master.scrollTop;
             delta = endOffset - startOffset;
+            duration = ONEPAGE.scrollDuration * Math.abs(delta) / master.scrollHeight;
             window.requestAnimationFrame(step);
         } else {
             master.scrollTop = endOffset;
