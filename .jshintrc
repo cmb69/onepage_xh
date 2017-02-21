@@ -1,0 +1,15 @@
+{
+    "curly": true,
+    "eqeqeq": true,
+    "esversion": 3,
+    "forin": true,
+    "freeze": true,
+    "futurehostile": true,
+    "predef": ["document", "location", "window"],
+    "singleGroups": true,
+    "undef": true,
+    "unused": true,
+    "globals": {
+        "ONEPAGE": false
+    }
+}

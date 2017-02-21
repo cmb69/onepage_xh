@@ -17,9 +17,6 @@
  * along with Onepage_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*jslint browser: true, maxlen: 80, regexp: true */
-/*global ONEPAGE */
-
 (function () {
     "use strict";
 
@@ -29,9 +26,9 @@
     var masterElement;
 
     function getElementsByClassName(className) {
-        if (typeof document.getElementsByClassName != "undefined") {
+        if (typeof document.getElementsByClassName !== "undefined") {
             return document.getElementsByClassName(className);
-        } else if (typeof document.querySelectorAll != "undefined") {
+        } else if (typeof document.querySelectorAll !== "undefined") {
             return document.querySelectorAll("." + className);
         } else {
             return [];
@@ -242,7 +239,7 @@
         var topLink;
 
         function showOrHideTopLink(suffix) {
-            if (typeof suffix != "string") {
+            if (typeof suffix !== "string") {
                 suffix = "";
             } else {
                 topLink.style.display = "block";
@@ -277,9 +274,11 @@
                 var a, id;
 
                 a = it.getElementsByTagName("a")[0];
-                if (!a) return;
+                if (!a) {
+                    return;
+                }
                 id = a.href.split("#")[1];
-                it.className = (id == selectedURL) ? "sdoc" : "doc";
+                it.className = id === selectedURL ? "sdoc" : "doc";
             });
         }
 

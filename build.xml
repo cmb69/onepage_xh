@@ -43,6 +43,12 @@
         <exec command="phpcompatinfo analyser:run --alias current" logoutput="true"/>
     </target>
 
+    <target name="jshint" description="lints JavaScript code">
+        <jshint>
+            <fileset refid="js-sources"/>
+        </jshint>
+    </target>
+
     <target name="unit-tests" description="runs all unit tests">
         <phpunit haltonerror="true" haltonfailure="true">
             <formatter type="plain" usefile="false"/>
@@ -99,6 +105,7 @@
         </move>
         <move todir="dist">
             <fileset dir="export">
+                <exclude name=".jshintrc"/>
                 <exclude name="build.xml"/>
                 <exclude name="composer.*"/>
                 <exclude name="coverage.xml"/>
