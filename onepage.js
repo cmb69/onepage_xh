@@ -42,12 +42,35 @@
      * @param   {Function}   callback
      * @returns {undefined}
      */
-    function forEach(items, callback) {
-        var i, n;
+    function map(items, func) {
+        var i, length, result;
 
-        for (i = 0, n = items.length; i < n; i += 1) {
-            callback(items[i]);
+        result = [];
+        for (i = 0, length = items.length; i < length; i++) {
+            result.push(func(items[i]));
         }
+        return result;
+    }
+
+    function filter(items, func) {
+        var i, length, result;
+
+        result = [];
+        for (i = 0, length = items.length; i < length; i++) {
+            if (func(items[i])) {
+                result.push(items[i]);
+            }
+        }
+        return result;
+    }
+
+    function reduce(items, init, func) {
+        var i, length;
+
+        for (i = 0, length = items.length; i < length; i++) {
+            init = func(init, items[i]);
+        }
+        return init;
     }
 
     /**
@@ -187,21 +210,21 @@
         var url, anchors;
 
         url = window.location.href.split("#")[0];
-        anchors = document.getElementsByTagName("a");
-        forEach(anchors, function (anchor) {
-            if (anchor.href.split("#")[0] === url) {
-                on(anchor, "click", function (event) {
-                    navigateToFragment(anchor.hash.substr(1));
-                    if (typeof event.preventDefault !== "undefined") {
-                        event.preventDefault();
-                    } else {
-                        event.returnValue = false;
-                    }
-                    if (anchor.id === "onepage_toplink") {
-                        anchor.blur();
-                    }
-                });
-            }
+        anchors = filter(document.getElementsByTagName("a"), function (anchor) {
+            return anchor.href.split("#")[0] === url;
+        });
+        map(anchors, function (anchor) {
+            on(anchor, "click", function (event) {
+                navigateToFragment(anchor.hash.substr(1));
+                if (typeof event.preventDefault !== "undefined") {
+                    event.preventDefault();
+                } else {
+                    event.returnValue = false;
+                }
+                if (anchor.id === "onepage_toplink") {
+                    anchor.blur();
+                }
+            });
         });
     }
 
@@ -252,33 +275,29 @@
         }
 
         function adjustMenuClasses() {
-            var pages, i, selectedURL, menu, menuItems;
-            
-            pages = getElementsByClassName("onepage_page");
-            for (i = pages.length - 1; i >= 0; i--) {
-                var page;
+            var selectedId, menu, menuItems;
 
-                page = pages[i];
-                if (masterElement.scrollTop >= getElementTop(page)) {
-                    selectedURL = encodeURIComponent(page.id);
-                    break;
+            function getSelectedId() {
+                var pages, page;
+
+                pages = getElementsByClassName("onepage_page");
+                page = reduce(pages, pages.length ? pages[0] : null, function (page1, page2) {
+                        return masterElement.scrollTop >= getElementTop(page2) ? page2 : page1;
+                });
+                if (page) {
+                    return encodeURIComponent(page.id);
                 }
             }
-            if (!selectedURL && pages.length >= 1) {
-                selectedURL = encodeURIComponent(pages[0].id);
-            }
 
+            selectedId = getSelectedId();
             menu = document.getElementById("onepage_menu");
             menuItems = menu.getElementsByTagName("li");
-            forEach(menuItems, function (it) {
-                var a, id;
+            map(menuItems, function (it) {
+                var anchor, id;
 
-                a = it.getElementsByTagName("a")[0];
-                if (!a) {
-                    return;
-                }
-                id = a.href.split("#")[1];
-                it.className = id === selectedURL ? "sdoc" : "doc";
+                anchor = it.getElementsByTagName("a")[0];
+                id = anchor.href.split("#")[1];
+                it.className = id === selectedId ? "sdoc" : "doc";
             });
         }
 
