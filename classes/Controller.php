@@ -28,7 +28,7 @@ class Controller
         global $edit, $plugin_cf, $plugin_tx, $s, $pd_router, $pth;
 
         $pd_router->add_interest('onepage_class');
-        if ((!XH_ADM || (!$edit && $s >= 0)) && $plugin_cf['onepage']['use_javascript']) {
+        if ($plugin_cf['onepage']['use_javascript']) {
                 self::emitJavaScript();
         }
         if (XH_ADM) {
@@ -55,10 +55,11 @@ class Controller
 
     protected static function emitJavaScript()
     {
-        global $pth, $u, $bjs, $plugin_cf;
+        global $pth, $u, $bjs, $plugin_cf, $edit, $s;
 
         $pcf = $plugin_cf['onepage'];
         $config = array(
+            'isOnepage' => !$edit && (!XH_ADM || $s >= 0),
             'numericUrls' => $pcf['url_numeric'],
             'scrollDuration' => $pcf['scroll_duration'],
             'scrollEasing' => $pcf['scroll_easing']

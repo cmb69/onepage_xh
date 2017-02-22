@@ -304,16 +304,18 @@
         }
 
         initMasterElement();
-        if (+ONEPAGE.scrollDuration) {
-            initSmoothScrolling();
-        }
         fixViewModeLink();
-        topLink = document.getElementById("onepage_toplink");
-        if (topLink) {
-            on(window, "scroll", showOrHideTopLink);
-            showOrHideTopLink("_immediate");
+        if (ONEPAGE.isOnepage) {
+            if (+ONEPAGE.scrollDuration) {
+                initSmoothScrolling();
+            }
+            topLink = document.getElementById("onepage_toplink");
+            if (topLink) {
+                on(window, "scroll", showOrHideTopLink);
+                showOrHideTopLink("_immediate");
+            }
+            on(window, "scroll", adjustMenuClasses);
         }
-        on(window, "scroll", adjustMenuClasses);
     }
 
     init();
