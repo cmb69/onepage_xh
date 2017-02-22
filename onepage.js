@@ -160,7 +160,9 @@
             oldOffset = startOffset = master.scrollTop;
             delta = endOffset - startOffset;
             duration = ONEPAGE.scrollDuration * Math.abs(delta) / master.scrollHeight;
-            window.requestAnimationFrame(step);
+            if (duration) {
+                window.requestAnimationFrame(step);
+            }
         } else {
             master.scrollTop = endOffset;
         }
@@ -176,9 +178,9 @@
         var master, scrollTop;
 
         master = masterElement;
-        scrollTop = master.scrollTop;
-        location.hash = id;
-        master.scrollTop = scrollTop;
+            scrollTop = master.scrollTop;
+            location.hash = id;
+            master.scrollTop = scrollTop;
         scrollToId(decodeURIComponent(id));
     }
 
