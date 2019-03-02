@@ -7,12 +7,14 @@ pages at once, and the menu links to automatically inserted anchors on
 the same page.
 
   - [Requirements](#requirements)
+  - [Download](#download)
   - [Installation](#installation)
   - [Settings](#settings)
   - [Usage](#usage)
       - [Template](#template)
       - [Page Data Tab](#page-data-tab)
   - [Limitations](#limitations)
+  - [Troubleshooting](#troubleshooting)
   - [License](#license)
   - [Credits](#credits)
 
@@ -20,6 +22,11 @@ the same page.
 
 Onepage\_XH is a plugin for CMSimple\_XH. It requires CMSimple\_XH ≥
 1.6.3 and PHP ≥ 5.3.0 with the *JSON* extension.
+
+## Download
+
+The [lastest release](https://github.com/cmb69/onepage_xh/releases/latest)
+is available for download on Github.
 
 ## Installation
 
@@ -100,10 +107,24 @@ Most likely not all plugins will work seemlessly with "onepage"
 websites. For instance, you can't use page\_param's site specific
 templates and page redirections.
 
+## Troubleshooting
+Report bugs and ask for support either on [Github](https://github.com/cmb69/onepage_xh/issues)
+or in the [CMSimple_XH Forum](https://cmsimpleforum.com/).
+
 ## License
 
-Onepage\_XH is licensed under
-[GPLv3](http://www.gnu.org/licenses/gpl.html).
+Onepage\_XH is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Onepage\_XH is distributed in the hope that it will be useful,
+but *without any warranty*; without even the implied warranty of
+*merchantibility* or *fitness for a particular purpose*. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Onepage\_XH.  If not, see <http://www.gnu.org/licenses/>.
 
 Copyright © 2015-2017 Christoph M. Becker
 
