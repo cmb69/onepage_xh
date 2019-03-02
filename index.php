@@ -19,7 +19,7 @@
  * along with Onepage_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-const ONEPAGE_VERSION = '1.0beta2';
+const ONEPAGE_VERSION = '1.0beta3';
 
 /**
  * @return array
