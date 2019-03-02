@@ -1,159 +1,88 @@
-﻿<!DOCTYPE html>
-<html lang="de">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="cs" xml:lang="cs">
 <head>
-<meta http-equiv="content-type" content="text/html;charset=utf-8">
-<title>Onepage_XH &ndash; Handbuch</title>
-<link rel="stylesheet" type="text/css" href="./stylesheet.css">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Onepage_XH – Benutzerhandbuch</title>
+  <style type="text/css">
+    body {
+        font-family: Georgia, serif;
+        line-height: 1.5;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        background: #ffffe1;
+        max-width: 40em;
+    }
+    p {
+        text-align: justify;
+    }
+    pre {
+        color: black;
+        background: #ffe;
+        overflow: auto;
+        padding: 0.2em 0.5em;
+        border: 1px solid silver;
+    }
+  </style>
 </head>
-
 <body>
-
-<h1>Onepage_XH &ndash; ein CMSimple_XH Plugin</h1>
-<div style="float:left; margin-right: 16px"><img src="../onepage.png"
-alt="Yin und Yang"></div>
-<p>Onepage_XH bietet Werkzeuge um so genannte "Onepage" Websites zu erstellen
-und zu Administrieren. Im Backend können Sie die Site wie gewohnt
-administrieren, aber im Frontend wird ein besonderes Template verwendet, das
-alle sichtbaren Seiten auf einmal zeigt, und das Menü verlinkt zu automatisch
-eingefügten Ankern auf der selben Seite.</p>
-
-<ul id="nav">
-<li><a href="#notice">Wichtiger Hinweis</a></li>
-<li><a href="#requirements">Voraussetzungen</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#settings">Einstellungen</a></li>
-<li><a href="#usage">Verwendung</a>
+<h1 id="onepage_xh">Onepage_XH</h1>
+<p>Onepage_XH bietet Werkzeuge um so genannte “Onepage” Websites zu erstellen und zu Administrieren. Im Backend können Sie die Site wie gewohnt administrieren, aber im Frontend wird ein besonderes Template verwendet, das alle sichtbaren Seiten auf einmal zeigt, und das Menü verlinkt zu automatisch eingefügten Ankern auf der selben Seite.</p>
 <ul>
-    <li><a href="#usage-template">Template</a></li>
-    <li><a href="#usage-pagedata">Page-Data Reiter</a></li>
+<li><a href="#voraussetzungen">Voraussetzungen</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#einstellungen">Einstellungen</a></li>
+<li><a href="#verwendung">Verwendung</a>
+<ul>
+<li><a href="#template">Template</a></li>
+<li><a href="#page-data-reiter">Page-Data Reiter</a></li>
 </ul></li>
-<li><a href="#limitations">Einschränkungen</a></li>
-<li><a href="#license">Lizenz</a></li>
-<li><a href="#credits">Danksagung</a></li>
+<li><a href="#einschränkungen">Einschränkungen</a></li>
+<li><a href="#lizenz">Lizenz</a></li>
+<li><a href="#danksagung">Danksagung</a></li>
 </ul>
-
-<div id="body">
-
-<p><strong>Bitte lesen Sie diese Dokumentation <em>bevor</em> Sie auf Probleme
-stoßen!</strong></p>
-
-<h2 id="notice">Wichtiger Hinweis</h2>
-<p><strong>Onepage_XH konnte noch nicht in verschiedenen Umgebungen getestet
-werden. Es ist eine so genannte Beta-Version. Vorsicht bei der
-Verwendung!</strong></p>
-<div class="toplink"><a href="#">zum Seitenanfang</a></div>
-
-<h2 id="requirements">Requirements</h2>
-<p>Onepage_XH ist ein Plugin für CMSimple_XH. Es benötigt CMSimple_XH &ge; 1.6.3
-und PHP &ge; 5.3.0.</p>
-<div class="toplink"><a href="#">zum Seitenanfang</a></div>
-
+<h2 id="voraussetzungen">Voraussetzungen</h2>
+<p>Onepage_XH ist ein Plugin für CMSimple_XH. Es benötigt CMSimple_XH ≥ 1.6.3 und PHP ≥ 5.3.0 mit der <em>JSON</em> Extension.</p>
 <h2 id="installation">Installation</h2>
-<p>Die Installation erfolgt wie bei vielen anderen CMSimple_XH-Plugins auch. Im
-<a href="http://www.cmsimple-xh.org/wiki/doku.php/de:installation">
-CMSimple_XH-Wiki</a> finden Sie weitere Details.</p>
-<ol>
+<p>Die Installation erfolgt wie bei vielen anderen CMSimple_XH-Plugins auch. Im <a href="https://wiki.cmsimple-xh.org/doku.php/de:installation#plugins">CMSimple_XH-Wiki</a> finden Sie weitere Details.</p>
+<ol type="1">
 <li>Sichern Sie die Daten auf Ihrem Server.</li>
 <li>Entpacken Sie die ZIP-Datei auf Ihrem Rechner.</li>
-<li>Laden Sie das ganze Verzeichnis onepage/ auf Ihren Server in CMSimple_XHs
-Plugin-Verzeichnis hoch.</li>
-<li>Machen Sie die Unterverzeichnisse config/, css/ und languages/
-beschreibbar.</li>
-<!--<li>Gehen Sie zu Plugins &rarr; Onepage im Administrationsbereich,
-um zu prüfen, ob alle Voraussetzungen erfüllt sind.</li>-->
+<li>Laden Sie das ganze Verzeichnis onepage/ auf Ihren Server in CMSimple_XHs Plugin-Verzeichnis hoch.</li>
+<li>Machen Sie die Unterverzeichnisse config/, css/ und languages/ beschreibbar.</li>
 </ol>
-<div class="toplink"><a href="#">zum Seitenanfang</a></div>
-
-<h2 id="settings">Einstellungen</h2>
-<p>Die Plugin-Konfiguration erfolgt wie bei vielen anderen CMSimple_XH-Plugins
-auch im Administrationsbereich der Website. Wählen Sie
-Plugins &rarr; Onepage.</p>
-<p>Sie können die Voreinstellungen von Onepage_XH unter "Konfiguration"
-ändern. Hinweise zu den Optionen werden beim Überfahren der Hilfe-Icons mit der
-Maus angezeigt.</p>
-<p>Die Lokalisierung wird unter "Sprache" vorgenommen. Sie können die
-Sprachtexte in Ihre eigene Sprache übersetzen,
-falls keine entsprechende Sprachdatei zur Verfügung steht,
-oder diese Ihren Wünschen gemäß anpassen.</p>
-<p>Das Aussehen von Onepage_XH kann unter "Stylesheet" angepasst werden.</p>
-<div class="toplink"><a href="#">zum Seitenanfang</a></div>
-
-<h2 id="usage">Verwendung</h2>
-<h3 id="usage-template">Template</h3>
-<p>"Onepage" Websites benötigen ein besonderes Template, bei dem einige der
-normalen CMSimple_XH Template-Tags durch Alternativen ersetzt sind, die
-Onepage_XH zur Verfügung stellt.</p>
-<h4>onepage_toc()</h4>
-<p>Dies ist ein erforderlicher Ersatz für toc(), der Links zu allen sichtbaren
-Seiten anzeigt.</p>
-<h4>onepage_content()</h4>
-<p>Dies ist ein erforderlicher Ersatz für content(), der alle sichtbaren Seiten
-auf der Startseite der CMSimple_XH Installation anzeigt.</p>
-<h4>onepage_toplink()</h4>
-<p>Dies ist ein optionaler Ersatz für top(), der konfigurierbares sanftes
-Scrollen anbietet, und nur angezeigt wird, wenn der Anwender bereits etwas nach
-unten gescrollt hat. Ohne JavaScript-Unterstützung wird der Link immer
-angezeigt, und statt des sanften Scrollens wird gesprungen. Das Bild des Links
-kann geändert werden, indem Sie eine Bilddatei mit dem Namen up.png im images/
-Ordner des Templates ablegen.</p>
-<p>Dieses Template-Tag akzeptiert einen optionalen Parameter, die ID eines
-Elements. Auf diese Weise können Sie den Anfang der Seite individuell
-definieren. Wenn Sie der Funktion kein Argument übergeben, verweist der Link
-ganz oben auf die Seite.</p>
-<h4>Nicht unterstützte Template-Tags</h4>
-<p>Mehrere Template-Tags werden für "Onepage" Templates nicht unterstützt:
-content(), li(), locator(), mailformlink(), nextpage(), previouspage(),
-printlink() searchbox(), sitemaplink(), submenu(), toc().</p>
-<div class="toplink"><a href="#">zum Seitenanfang</a></div>
-
-<h3 id="usage-pagedata">Page-Data Reiter</h3>
-<p>
-    Im Reiter "Onepage" (oberhalb des Editors) kann optional eine zusätzliche
-    CSS Klasse für die jeweilige Seite vergeben werden. Dies ermöglicht
-    individuelles und robustes Seitendesign.
-</p>
-<div class="toplink"><a href="#">back to top</a></div>
-
-<h2 id="limitations">Einschränkungen</h2>
-<p>Vermutlich werden nicht alle Plugins reibungslos unter "Onepage" Websites
-funktionieren. Z.B. können Sie mit page_params keine seitenspezischen Templates
-wählen, und keine Seitenweiterleitung konfigurieren.</p>
-<div class="toplink"><a href="#">zum Seitenanfang</a></div>
-
-<h2 id="license">Lizenz</h2>
-<p>Onepage_XH kann unter Einhaltung der
-<a href="http://www.gnu.org/licenses/gpl.html">GPLv3</a> verwendet werden.</p>
-<p>&copy; 2015-2017 Christoph M. Becker</p>
-<div class="toplink"><a href="#">zum Seitenanfang</a></div>
-
-<h2 id="credits">Danksagung</h2>
-<p>Onepage_XH wurde von Ludwig und oldnema angeregt.</p>
-<p>Das Plugin Logo wurde von <a
-href="http://commons.wikimedia.org/wiki/File:Yin_and_Yang.svg">Klem</a>
-gestaltet. Vielen Dank für die Freigabe dieses Icons in die Gemeinfreiheit.</p>
-<p>Das "nach oben scrollen" Icon wurde vom <a
-href="http://www.iconarchive.com/show/oxygen-icons-by-oxygen-icons.org.html">Oxygen
-Team</a> gestaltet. Vielen Dank für die Veröffentlichung unter GPL.</p>
-<!--<p>This plugin uses free applications icons from <a-->
-<!--href="http://www.aha-soft.com/">Aha-Soft</a>. Many thanks for making these icons-->
-<!--freely available.</p>-->
-<p>Vielen Dank an die Community im <a
-href="http://www.cmsimpleforum.com/">CMSimple_XH forum</a> für Hinweise,
-Anregungen und das Testen. Besonderer Dank gebührt smaxle und knollsen für
-frühes Testen und gute Vorschläge.
-Ebenfalls geht ein besonderes Dankeschön an Holger, lck und frase für eine lange
-und fruchtbare Diskussion mit reichlich Vorschlägen, Ihr Testen und den
-beigesteuerten Code.</p>
-</p>
-<p>Und zu guter letzt vielen Dank an <a href="http://www.harteg.dk/">Peter
-Harteg</a>, den "Vater" von CMSimple, und allen Entwicklern von <a
-href="http://www.cmsimple-xh.org/de/">CMSimple_XH</a> ohne die es dieses
-phantastische CMS nicht gäbe.</p>
-<div class="toplink"><a href="#">zum Seitenanfang</a></div>
-
-</div>
-
+<h2 id="einstellungen">Einstellungen</h2>
+<p>Die Plugin-Konfiguration erfolgt wie bei vielen anderen CMSimple_XH-Plugins auch im Administrationsbereich der Website. Wählen Sie Plugins → Onepage.</p>
+<p>Sie können die Voreinstellungen von Onepage_XH unter “Konfiguration” ändern. Hinweise zu den Optionen werden beim Überfahren der Hilfe-Icons mit der Maus angezeigt.</p>
+<p>Die Lokalisierung wird unter “Sprache” vorgenommen. Sie können die Sprachtexte in Ihre eigene Sprache übersetzen, falls keine entsprechende Sprachdatei zur Verfügung steht, oder diese Ihren Wünschen gemäß anpassen.</p>
+<p>Das Aussehen von Onepage_XH kann unter “Stylesheet” angepasst werden.</p>
+<h2 id="verwendung">Verwendung</h2>
+<h3 id="template">Template</h3>
+<p>“Onepage” Websites benötigen ein besonderes Template, bei dem einige der normalen CMSimple_XH Template-Tags durch Alternativen ersetzt sind, die Onepage_XH zur Verfügung stellt.</p>
+<h4 id="onepage_toc"><code>onepage_toc()</code></h4>
+<p>Dies ist ein <strong>erforderlicher</strong> Ersatz für <code>toc()</code>, der Links zu allen sichtbaren Seiten anzeigt.</p>
+<h4 id="onepage_content"><code>onepage_content()</code></h4>
+<p>Dies ist ein <strong>erforderlicher</strong> Ersatz für <code>content()</code>, der alle sichtbaren Seiten auf der Startseite der CMSimple_XH Installation anzeigt.</p>
+<h4 id="onepage_toplink"><code>onepage_toplink()</code></h4>
+<p>Dies ist ein <strong>optionaler</strong> Ersatz für <code>top()</code>, der konfigurierbares sanftes Scrollen anbietet, und nur angezeigt wird, wenn der Anwender bereits etwas nach unten gescrollt hat. Ohne JavaScript-Unterstützung wird der Link immer angezeigt, und statt des sanften Scrollens wird gesprungen. Das Bild des Links kann geändert werden, indem Sie eine Bilddatei mit dem Namen up.png im images/ Ordner des Templates ablegen.</p>
+<p>Dieses Template-Tag akzeptiert einen optionalen Parameter, die ID eines Elements. Auf diese Weise können Sie den Anfang der Seite individuell definieren. Wenn Sie der Funktion kein Argument übergeben, verweist der Link ganz oben auf die Seite.</p>
+<h4 id="nicht-unterstützte-template-tags">Nicht unterstützte Template-Tags</h4>
+<p>Mehrere Template-Tags werden für “Onepage” Templates nicht unterstützt: <code>content()</code>, <code>li()</code>, <code>locator()</code>, <code>mailformlink()</code>, <code>nextpage()</code>, <code>previouspage()</code>, <code>printlink()</code>, <code>searchbox()</code>, <code>sitemaplink()</code>, <code>submenu()</code>, <code>toc()</code>.</p>
+<h3 id="page-data-reiter">Page-Data Reiter</h3>
+<p>Im Reiter “Onepage” (oberhalb des Editors) kann optional eine zusätzliche CSS Klasse für die jeweilige Seite vergeben werden. Dies ermöglicht individuelles und robustes Seitendesign.</p>
+<h2 id="einschränkungen">Einschränkungen</h2>
+<p>Vermutlich werden nicht alle Plugins reibungslos unter “Onepage” Websites funktionieren. Z.B. können Sie mit page_params keine seitenspezischen Templates wählen, und keine Seitenweiterleitung konfigurieren.</p>
+<h2 id="lizenz">Lizenz</h2>
+<p>Onepage_XH kann unter Einhaltung der <a href="http://www.gnu.org/licenses/gpl.html">GPLv3</a> verwendet werden.</p>
+<p>Copyright © 2015-2017 Christoph M. Becker</p>
+<h2 id="danksagung">Danksagung</h2>
+<p>Onepage_XH wurde von <em>Ludwig</em> und <em>oldnema</em> angeregt.</p>
+<p>Das Plugin Logo wurde von <a href="http://commons.wikimedia.org/wiki/File:Yin_and_Yang.svg">Klem</a> gestaltet. Vielen Dank für die Freigabe dieses Icons in die Gemeinfreiheit.</p>
+<p>Das “nach oben scrollen” Icon wurde vom <a href="http://www.iconarchive.com/show/oxygen-icons-by-oxygen-icons.org.html">Oxygen Team</a> gestaltet. Vielen Dank für die Veröffentlichung unter GPL.</p>
+<p>Vielen Dank an die Community im <a href="http://www.cmsimpleforum.com/">CMSimple_XH forum</a> für Hinweise, Anregungen und das Testen. Besonderer Dank gebührt <em>smaxle</em> und <em>knollsen</em> für frühes Testen und gute Vorschläge. Ebenfalls geht ein besonderes Dankeschön an <em>Holger</em>, <em>lck</em> und <em>frase</em> für lange und fruchtbare Diskussionen mit reichlich Vorschlägen, Ihr Testen und den beigesteuerten Code.</p>
+<p>Und zu guter letzt vielen Dank an <a href="http://www.harteg.dk/">Peter Harteg</a>, den “Vater” von CMSimple, und allen Entwicklern von <a href="http://www.cmsimple-xh.org/de/">CMSimple_XH</a> ohne die es dieses phantastische CMS nicht gäbe.</p>
 </body>
-
 </html>
