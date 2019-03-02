@@ -35,7 +35,7 @@ class Li extends XH_Li
 
         $html = parent::renderULStartTags($i);
         if ($l[$i] == 1) {
-            return preg_replace('/<ul class/', '<ul id="onepage_menu" class', $html, 1);
+            return preg_replace('/<ul class="/', '<ul class="onepage_menu ', $html, 1);
         } else {
             return $html;
         }
