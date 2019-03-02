@@ -36,7 +36,7 @@ EOT
     );
 }
 
-const ONEPAGE_VERSION = '@ONEPAGE_VERSION@';
+const ONEPAGE_VERSION = '1.0beta2';
 
 /**
  * @return array

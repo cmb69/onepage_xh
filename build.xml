@@ -83,17 +83,6 @@
         <exec command="git archive -o export.zip HEAD" checkreturn="true"/>
         <unzip file="export.zip" todir="export"/>
         <delete file="export.zip"/>
-        <move todir="dist">
-            <fileset dir="export">
-                <include name="index.php"/>
-                <include name="version.nfo"/>
-            </fileset>
-            <filterchain>
-                <replacetokens>
-                    <token key="ONEPAGE_VERSION" value="${version}"/>
-                </replacetokens>
-            </filterchain>
-        </move>
         <jsMin targetDir="dist" suffix="" failOnError="false">
             <fileset dir="export">
                 <include name="*.min.js"/>
