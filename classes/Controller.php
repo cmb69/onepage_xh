@@ -190,8 +190,8 @@ class Controller
     protected static function replaceAlternativeHeading($content, array $pageData)
     {
         global $cf;
-    
-        if ($pageData['show_heading'] == '1') {
+
+        if (isset($pageData['show_heading']) && $pageData['show_heading'] == '1') {
             $pattern = '/(<h[1-' . $cf['menu']['levels'] . '].*>).+(<\/h[1-'
                 . $cf['menu']['levels'] . ']>)/isU';
             if (trim($pageData['heading']) == '') {
