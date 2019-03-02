@@ -96,7 +96,7 @@
         </move>
         <jsMin targetDir="dist" suffix="" failOnError="false">
             <fileset dir="export">
-                <include name="*.js"/>
+                <include name="*.min.js"/>
             </fileset>
         </jsMin>
         <move todir="dist">

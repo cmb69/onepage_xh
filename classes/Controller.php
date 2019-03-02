@@ -71,7 +71,7 @@ class Controller
             . 'var ONEPAGE = ' . json_encode($config)
             . '/* ]]> */</script>'
             . '<script type="text/javascript" src="' . $pth['folder']['plugins']
-            . 'onepage/onepage.js"></script>';
+            . 'onepage/onepage.min.js"></script>';
     }
 
     /**
