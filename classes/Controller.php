@@ -67,11 +67,8 @@ class Controller
         if (XH_ADM && $pcf['url_numeric']) {
             $config['urls'] = array_flip($u);
         }
-        $bjs .= '<script type="text/javascript">/* <![CDATA[ */'
-            . 'var ONEPAGE = ' . json_encode($config)
-            . '/* ]]> */</script>'
-            . '<script type="text/javascript" src="' . $pth['folder']['plugins']
-            . 'onepage/onepage.min.js"></script>';
+        $bjs .= '<script>var ONEPAGE = ' . json_encode($config) . ';</script>'
+            . '<script src="' . $pth['folder']['plugins'] . 'onepage/onepage.min.js"></script>';
     }
 
     /**
