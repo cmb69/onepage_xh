@@ -176,10 +176,9 @@ class Controller
                     )
                 );
             }
-            return $o . preg_replace('/#CMSimple (.*?)#/is', '', $contents);
-        } else {
-            return $o;
+            $o .= preg_replace('/#CMSimple (.*?)#/is', '', $contents);
         }
+        return preg_replace('/<!--XH_ml[1-9]:.*?-->/is', '', $o);
     }
 
     /**
