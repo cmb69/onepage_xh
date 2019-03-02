@@ -126,7 +126,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Onepage\_XH.  If not, see <http://www.gnu.org/licenses/>.
 
-Copyright © 2015-2017 Christoph M. Becker
+Copyright © Christoph M. Becker
 
 ## Credits
 

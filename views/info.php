@@ -2,7 +2,7 @@
 <img class="onepage_logo" src="<?=$this->logo?>" alt="<?=$this->text('alt_logo')?>"/>
 <p>Version: <?=$this->version?></p>
 <p>
-    Copyright &copy; 2015-2017 <a href="http://3-magi.net/">Christoph M.
+    Copyright &copy; <a href="http://3-magi.net/">Christoph M.
     Becker</a>
 </p>
 <p class="onepage_justify">

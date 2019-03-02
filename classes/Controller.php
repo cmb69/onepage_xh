@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2015-2017 Christoph M. Becker
+ * Copyright (c) Christoph M. Becker
  *
  * This file is part of Onepage_XH.
  *
