@@ -25,7 +25,7 @@ class Controller
 {
     public static function dispatch()
     {
-        global $edit, $plugin_cf, $plugin_tx, $s, $pd_router, $pth;
+        global $edit, $plugin_cf, $plugin_tx, $pd_router, $pth;
 
         $pd_router->add_interest('onepage_class');
         if ($plugin_cf['onepage']['use_javascript']) {
